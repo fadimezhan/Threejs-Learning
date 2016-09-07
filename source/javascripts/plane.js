@@ -1,6 +1,5 @@
-// This is where it all goes :)
 
-
+//plane
 window.addEventListener("DOMContentLoaded", function() {
 
     var scene, renderer, camera,controls;
@@ -21,15 +20,34 @@ window.addEventListener("DOMContentLoaded", function() {
     controls = new THREE.TrackballControls(camera);
     controls.addEventListener('change', render);
 
+    //plane
+    var size = 30, step = 3;
+    var geometry = new THREE.Geometry();
+    var material = new THREE.LineBasicMaterial({color: 'green'});
+
+    for (var i = -size; i <= size; i += step) {
+        geometry.vertices.push(new THREE.Vector3(-size, 0, i));
+        geometry.vertices.push(new THREE.Vector3(size, 0, i));
+        geometry.vertices.push(new THREE.Vector3(i, 0, -size));
+        geometry.vertices.push(new THREE.Vector3(i, 0, size));
+    }
+
+    var line = new THREE.Line(geometry, material, THREE.LinePieces);
+    scene.add(line);
+
     animate();
+    render();
 
     function animate() {
         requestAnimationFrame(animate);
         controls.update();
     }
 
+
+
     function render() {
         renderer.render(scene, camera);
     }
 
 }, false);
+
