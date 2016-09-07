@@ -1,6 +1,5 @@
-// This is where it all goes :)
-
 window.addEventListener("DOMContentLoaded", function(){
+
 
     var viewAngle = 80;
     var width  = window.innerWidth;
@@ -26,23 +25,30 @@ window.addEventListener("DOMContentLoaded", function(){
     var directionalLight = new THREE.DirectionalLight( 0xffffff, 5 );
     directionalLight.position.z = 3;
     scene.add( directionalLight );
+
     // cube geometry (200 x 200 x 200);
-    //var geometry = new THREE.CubeGeometry(200, 200, 200);
-    //var material = new THREE.MeshLambertMaterial( { color: 0x660000 } );
+    var geometry = new THREE.SphereGeometry(10, 10, 10);
+    var material = new THREE.MeshLambertMaterial( { color: 0x660000 } );
     //var cubeMesh = new THREE.Mesh( geometry, material);
 
 
-    var ballGeo = new THREE.SphereGeometry(50,35,35);
-    var material = new THREE.MeshPhongMaterial({color: 0xE8B3});
-    var ball = new THREE.Mesh(ballGeo, material);
+    var group = new THREE.Group();
 
-    var pendulumGeo = new THREE.CubeGeometry(150, 50, 50);
-    ball.updateMatrix();
-    pendulumGeo.merge(ball.geometry, ball.matrix);
+    for ( var i = 0; i < 1000; i ++ ) {
 
-    var pendulum = new THREE.Mesh(pendulumGeo, material);
-    scene.add(pendulum);
+        var mesh = new THREE.Mesh( geometry, material );
+        mesh.position.x = Math.random() * 2000 - 1000;
+        mesh.position.y = Math.random() * 2000 - 1000;
+        mesh.position.z = Math.random() * 2000 - 1000;
 
+        mesh.rotation.x = Math.random() * 360 * ( Math.PI / 180 );
+        mesh.rotation.y = Math.random() * 360 * ( Math.PI / 180 );
+
+        group.add( mesh );
+
+    }
+
+    scene.add( group );
 
     renderer.render( scene, camera );
 
