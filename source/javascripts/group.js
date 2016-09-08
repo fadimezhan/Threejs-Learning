@@ -26,12 +26,14 @@ window.addEventListener("DOMContentLoaded", function(){
     directionalLight.position.z = 3;
     scene.add( directionalLight );
 
+
     // cube geometry (200 x 200 x 200);
     var geometry = new THREE.SphereGeometry(10, 10, 10);
     var material = new THREE.MeshLambertMaterial( { color: 0x660000 } );
     //var cubeMesh = new THREE.Mesh( geometry, material);
 
 
+    //group
     var group = new THREE.Group();
 
     for ( var i = 0; i < 1000; i ++ ) {
@@ -50,14 +52,18 @@ window.addEventListener("DOMContentLoaded", function(){
 
     scene.add( group );
 
+
+    /*
+    var group = new THREE.Group();
+
+    //var geometry = new THREE.PlaneBufferGeometry( 2, 2 );
+    //var material = new THREE.MeshStandardMaterial();
+    var mesh = new THREE.Mesh( geometry, material );
+
+    group.add( mesh );
+
+    scene.add( group );*/
+
     renderer.render( scene, camera );
 
-    window.addEventListener('mousemove', function (e) {
-        var mouseX = ( e.clientX - width / 2 );
-        var mouseY = ( e.clientY - height / 2 );
-        cubeMesh.rotation.x = mouseY * 0.005;
-        cubeMesh.rotation.y = mouseX * 0.005;
-
-        renderer.render( scene, camera );
-    }, false);
 }, false);
