@@ -1,23 +1,22 @@
 <!doctype html>
 <html>
 <head>
-  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <title>three.js / editor</title>
   <meta charset="utf-8">
-  <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
-
-  <!-- Use title if it's in the page YAML frontmatter -->
-  <title><%= current_page.data.title || "Middleman" %></title>
-
-  <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
-  <script src="javascripts/three.js"></script>
-  <script src="javascripts/three.min.js"></script>
-  <script src="javascripts/TrackballControls.js"></script>
-
-  <%= stylesheet_link_tag :site %>
-  <%= javascript_include_tag :mergeGroup %>
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 </head>
 
-<body class="<%= page_classes %>">
+<body ontouchstart="">
+
+<link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+<script src="javascripts/three.js"></script>
+<script src="javascripts/three.min.js"></script>
+<script src="javascripts/TrackballControls.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+
+<%= stylesheet_link_tag :site %>
+<%= javascript_include_tag :selectedArea %>
 
 <%= yield %>
 

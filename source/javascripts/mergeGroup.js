@@ -35,32 +35,59 @@ window.addEventListener("DOMContentLoaded", function(){
 
 
     var group = new THREE.Group();
-    var circleGeo = new THREE.CircleGeometry(1.75, 32);
+    var circleGeo = new THREE.CircleGeometry(1.769, 32);
     var material = new THREE.MeshPhongMaterial({color: 0X89B1});
-    var circle = new THREE.Mesh(circleGeo, material);
+    var material2 = new THREE.MeshPhongMaterial({color: 000000});
+    var circle = new THREE.Mesh(circleGeo, material2);
     circle.position.y = 1.45;
 
     var planeGeo = new THREE.PlaneGeometry(3.50, 3.50, 0, 0);
 
     var plane = new THREE.Mesh(planeGeo, material);
 
-    THREE.GeometryUtils.merge(planeGeo, circleGeo);
+    circle.updateMatrix();
+    plane.updateMatrix();
+    planeGeo.merge(circle.geometry, circle.matrix);
 
-    //circle.updateMatrix();
-    //planeGeo.merge(circle.geometry, circle.matrix);
+    //var meshGeo = new THREE.Geometry();
+    //meshGeo.merge(circle.geometry, circle.matrix);
+    //meshGeo.merge(plane.geometry, plane.matrix);
+    //meshGeo.delete(plane.geometry, plane.matrix);
 
-    //delete group.geometry;
+    //var mesh = new THREE.Mesh(meshGeo, material);
 
     //group.add(circle, plane);
+    var array = new Array();
+    array.push(circle);
+    array.push(plane);
+    group.add(array[0]);
+    group.add(array[1]);
+    scene.add(group);
 
-    //delete circle.material;
-    //delete circle.geometry;
-    //scene.add(circle);
 
 
+    /*
+    var blueMaterial = new THREE.MeshPhongMaterial( {color: 0x0000FF } );
+    var redMaterial = new THREE.MeshPhongMaterial({ color:0xFF0000 });
+    var meshFaceMaterial = new THREE.MeshFaceMaterial( [ blueMaterial, redMaterial ] );
 
-    //plane.remove(circle);
-    //scene.add(plane);
+    var boxGeometry = new THREE.BoxGeometry( 10, 10, 10 );
+
+    for ( var face in boxGeometry.faces ) {
+        boxGeometry.faces[ face ].materialIndex = 0;
+    }
+
+    var sphereGeometry = new THREE.SphereGeometry( 5, 16, 16 );
+    sphereGeometry.applyMatrix( new THREE.Matrix4().makeTranslation(0, 5, 0) );
+
+    var mergeGeometry = new THREE.Geometry();
+    mergeGeometry.merge( boxGeometry, boxGeometry.matrix );
+    mergeGeometry.merge( sphereGeometry, sphereGeometry.matrix, 1 );
+
+    var mesh = new THREE.Mesh( mergeGeometry, meshFaceMaterial );
+    scene.add( mesh );
+    */
+
 
 
     /*var sphere = new THREE.Mesh( new THREE.SphereGeometry(100,16,12),new THREE.MeshLambertMaterial( { color: 0x2D303D, wireframe: true, shading: THREE.FlatShading } ));
