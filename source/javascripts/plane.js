@@ -14,9 +14,9 @@ window.addEventListener("DOMContentLoaded", function() {
     // set a camera
     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
     camera.position.set(20, 40, 50);
-    camera.lookAt(scene.position);
+    //camera.lookAt(scene.position);
 
-    //controls
+    controls
     controls = new THREE.TrackballControls(camera);
     controls.addEventListener('change', render);
 
