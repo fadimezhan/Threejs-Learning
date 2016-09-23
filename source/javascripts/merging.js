@@ -6,6 +6,18 @@ window.addEventListener("DOMContentLoaded", function() {
     // create a scene
     scene = new THREE.Scene();
 
+    //CSG Object
+    var box = new THREE.Mesh( new THREE.BoxGeometry( 10, 1, 10 ) );
+    var cube_bsp = new ThreeBSP( box );
+
+    var cutgeo = new THREE.SphereGeometry( 3, 10, 6 );
+    var sub =  new THREE.Mesh( cutgeo );
+    var substract_bsp  = new ThreeBSP( sub );
+    var subtract_bsp  = cube_bsp.subtract( substract_bsp );
+
+    var result = subtract_bsp.toMesh();
+    scene.add(result);
+
     //renderer
     renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
