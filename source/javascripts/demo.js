@@ -18,6 +18,21 @@ window.addEventListener("DOMContentLoaded", function() {
     var obj  = cube_bsp.subtract( sphere_bsp );
 
     var result = obj.toMesh();
+
+    //html codes
+    var choose = document.createElement("div");
+    choose.setAttribute("id","weird");
+    choose.setAttribute("class","elements");
+    $('body').append(choose);
+    //css codes
+    document.getElementById("weird").style.height ='%50';
+    document.getElementById("weird").style.width ='%50';
+    var cssObject = new THREE.CSS3DObject( result );
+    cssObject.width = result.width;
+    cssObject.height = result.height;
+    //cssObject.position = result.position;
+    //cssObject.rotation = result.rotation;
+    scene.add(cssObject);
     scene.add(result);
 
 
