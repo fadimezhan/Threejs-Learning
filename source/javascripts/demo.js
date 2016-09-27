@@ -22,17 +22,26 @@ window.addEventListener("DOMContentLoaded", function() {
     //html codes
     var choose = document.createElement("div");
     choose.setAttribute("id","weird");
-    choose.setAttribute("class","elements");
+    choose.setAttribute("class", "elements");
+    choose.style.marginLeft = "34rem";
+    choose.style.marginTop = "10rem";
+    choose.style.width = ((box.scale.x)*11.5 + "rem");
+    choose.style.height = ((result.scale.y)*12 + "rem");
     $('body').append(choose);
-    //css codes
-    document.getElementById("weird").style.height ='%50';
-    document.getElementById("weird").style.width ='%50';
-    var cssObject = new THREE.CSS3DObject( result );
-    cssObject.width = result.width;
-    cssObject.height = result.height;
-    //cssObject.position = result.position;
-    //cssObject.rotation = result.rotation;
+    var cssObject = new THREE.CSS3DObject( choose );
     scene.add(cssObject);
+
+    /*var element = document.createElement('div');
+    //element.innerHTML = 'Plain text inside a div.';
+    element.className = 'elements';
+    element.id= 'weird';
+    //var element2 = document.getElementsById('weird');
+
+    //CSS Object
+    var div = new THREE.CSS3DObject(element);
+    div.scale = result.scale;
+    scene.add(div);*/
+
     scene.add(result);
 
 
