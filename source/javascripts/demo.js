@@ -19,8 +19,9 @@ window.addEventListener("DOMContentLoaded", function() {
 
     var result = obj.toMesh();
 
+
     //html codes
-    var choose = document.createElement("div");
+    /*var choose = document.createElement("div");
     choose.setAttribute("id","weird");
     choose.setAttribute("class", "elements");
     choose.style.marginLeft = "34rem";
@@ -29,7 +30,9 @@ window.addEventListener("DOMContentLoaded", function() {
     choose.style.height = ((result.scale.y)*12 + "rem");
     $('body').append(choose);
     var cssObject = new THREE.CSS3DObject( choose );
-    scene.add(cssObject);
+    scene.add(cssObject);*/
+
+
 
     /*var element = document.createElement('div');
     //element.innerHTML = 'Plain text inside a div.';

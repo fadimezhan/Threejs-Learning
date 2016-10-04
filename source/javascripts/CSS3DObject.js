@@ -8,7 +8,7 @@ THREE.CSS3DObject = function (element) {
     THREE.Object3D.call(this);
 
     this.element = element;
-    //this.element.style.position = 'absolute';
+    this.element.style.position = 'absolute';
 
     this.addEventListener('removed', function () {
         if (this.element.parentNode !== null) {
@@ -84,15 +84,15 @@ THREE.CSS3DRenderer = function () {
     };
 
     var getCameraCSSMatrix = function (matrix) {
-        return 'matrix3d(' + matrix.elements.map(function (e) {
+        /*return 'matrix3d(' + matrix.elements.map(function (e) {
                 return epsilon(e % 4 == 1 ? -e : e);
-            }).join(',') + ')';
+            }).join(',') + ')';*/
     };
 
     var getObjectCSSMatrix = function (matrix) {
-        return 'translate3d(-50%,-50%,0) matrix3d(' + matrix.elements.map(function (e) {
+        /*return 'translate3d(-50%,-50%,0) matrix3d(' + matrix.elements.map(function (e) {
                 return epsilon(e > 3 && e < 8 ? -e : e);
-            }).join(',') + ')';
+            }).join(',') + ')';*/
     };
 
     var renderObject = function (object, camera) {
