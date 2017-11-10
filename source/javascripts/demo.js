@@ -77,7 +77,7 @@ window.addEventListener("DOMContentLoaded", function() {
     var line = new THREE.Line(geometry, material, THREE.LinePieces);
     scene.add(line);
 
-    //animate();
+    animate();
     render();
 
     function animate() {
